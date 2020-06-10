@@ -139,3 +139,5 @@ lists/*
 
 # exception to the rule
 !lists/list_example.md
+
+**/*.jpg
