@@ -129,15 +129,15 @@ dmypy.json
 .pyre/
 
 # exclude everything
-files/*
+dia-renamer/files/*
 
 # exception to the rule
-!files/file_example.md
+!dia-renamer/files/file_example.md
 
 # exclude everything
-lists/*
+dia-renamer/lists/*
 
 # exception to the rule
-!lists/list_example.md
+!dia-renamer/lists/list_example.md
 
 **/*.jpg
