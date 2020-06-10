@@ -140,4 +140,9 @@ dia-renamer/lists/*
 # exception to the rule
 !dia-renamer/lists/list_example.md
 
+# Images
 **/*.jpg
+
+# ide
+.idea
+.ftpconfig
