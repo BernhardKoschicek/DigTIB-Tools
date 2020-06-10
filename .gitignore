@@ -127,3 +127,15 @@ dmypy.json
 
 # Pyre type checker
 .pyre/
+
+# exclude everything
+files/*
+
+# exception to the rule
+!files/file_example.md
+
+# exclude everything
+lists/*
+
+# exception to the rule
+!lists/list_example.md
