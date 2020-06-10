@@ -130,14 +130,10 @@ dmypy.json
 
 # exclude everything
 dia-renamer/files/*
-
-# exception to the rule
-!dia-renamer/files/file_example.md
-
-# exclude everything
 dia-renamer/lists/*
 
 # exception to the rule
+!dia-renamer/files/file_example.md
 !dia-renamer/lists/list_example.md
 
 # Images
@@ -146,3 +142,7 @@ dia-renamer/lists/*
 # ide
 .idea
 .ftpconfig
+
+# exclude digtib register
+digtib-register/register/*
+digtib-register/doc/*
