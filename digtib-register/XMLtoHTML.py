@@ -4,8 +4,8 @@ import string
 
 import bs4
 
-source = "C:/Users/bkoschicek/Desktop/Python/dig-tib/register/better/"  # this is where the tgn files are
-target = "C:/Users/bkoschicek/Desktop/Python/dig-tib/register/better/linked/"  # the original dispatch files
+source = "C:/Users/bkoschicek/Desktop/Python/dig-tib/register/better/"
+target = "C:/Users/bkoschicek/Desktop/Python/dig-tib/register/better/linked/"
 
 lof = os.listdir(source)
 result = []

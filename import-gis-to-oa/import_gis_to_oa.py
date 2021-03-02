@@ -1,6 +1,6 @@
 import numpy
 import psycopg2
-from flask import json
+import json
 
 conn = psycopg2.connect(
     host="localhost",
