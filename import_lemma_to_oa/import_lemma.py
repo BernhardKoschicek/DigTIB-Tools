@@ -2,6 +2,7 @@ import json
 import numpy
 import psycopg2
 from bs4 import BeautifulSoup
+import re
 
 conn = psycopg2.connect(
     host="localhost",
@@ -42,8 +43,13 @@ def lemma_import():
                     type_id=None)
 
         # Link to Ext Ref
+        page = None
+        if re.findall(r'^(.*?)\D+', lemma['pages']):
+            page = re.findall(r'^(.*?)\D+', lemma['pages'])[0]
+        if not page:
+            page = lemma['pages']
         insert_link(domain_id=lemma['external_id'], range_id=place_id, property_code='P67',
-                    description=lemma['pages'], type_id="117448")
+                    description=page, type_id="117448")
 
         # Link to Reference
         insert_link(domain_id=lemma['book_id'], range_id=place_id, property_code='P67',

@@ -1,0 +1,93 @@
+{
+  "@context": "https://raw.githubusercontent.com/LinkedPasts/linked-places/master/linkedplaces-context-v1.jsonld",
+  "features": [
+    {
+      "@id": "https://tibopenatlas.oeaw.ac.at/entity/123328",
+      "crmClass": "crm:E18_Physical_Thing",
+      "description": [
+        {
+          "value": "The Byzantine basilica in Shirq, dedicated to Saint Sergius, was built in the 12th or 13th century. Today only ruins remain next to the Buna river."
+        }
+      ],
+      "geometry": {
+        "coordinates": [
+          19.43988,
+          41.99038
+        ],
+        "description": "The Byzantine basilica in Shirq, dedicated to Saint Sergius, was built in the 12th or 13th century. Today only ruins remain next to the Buna river.",
+        "title": "Shirq, Byzantine Basilica",
+        "type": "Point"
+      },
+      "properties": {
+        "name": "Shirq, Byzantine Basilica"
+      },
+      "relations": [
+        {
+          "label": "Beyond East and West: Sacred Landscapes Duklja and Raška",
+          "relationTo": "https://tibopenatlas.oeaw.ac.at/api/0.1/entity/117730",
+          "relationType": "crm:P2_has_type"
+        },
+        {
+          "label": "Existing Church",
+          "relationTo": "https://tibopenatlas.oeaw.ac.at/api/0.1/entity/286",
+          "relationType": "crm:P2_has_type"
+        },
+        {
+          "label": "Location of Shirq Byzantine Basilica",
+          "relationTo": "https://tibopenatlas.oeaw.ac.at/api/0.1/entity/123329",
+          "relationType": "crm:P53_has_former_or_current_location"
+        },
+        {
+          "label": "Orthodox",
+          "relationTo": "https://tibopenatlas.oeaw.ac.at/api/0.1/entity/120406",
+          "relationType": "crm:P2_has_type"
+        },
+        {
+          "label": "Saint Sergius",
+          "relationTo": "https://tibopenatlas.oeaw.ac.at/api/0.1/entity/118316",
+          "relationType": "crm:P2_has_type"
+        },
+        {
+          "label": "Zindel et al. 2018",
+          "relationTo": "https://tibopenatlas.oeaw.ac.at/api/0.1/entity/122948",
+          "relationType": "crm:P67i_refers_to"
+        }
+      ],
+      "type": "Feature",
+      "types": [
+        {
+          "hierarchy": "Case Study",
+          "identifier": "https://tibopenatlas.oeaw.ac.at/api/0.1/entity/117730",
+          "label": "Beyond East and West: Sacred Landscapes Duklja and Raška"
+        },
+        {
+          "description": "Saint Sergius was an high ranking officer of the Roman army and was persecuted during the Diocletianic Persecutions.",
+          "hierarchy": "Dedication",
+          "identifier": "https://tibopenatlas.oeaw.ac.at/api/0.1/entity/118316",
+          "label": "Saint Sergius"
+        },
+        {
+          "hierarchy": "Denomination",
+          "identifier": "https://tibopenatlas.oeaw.ac.at/api/0.1/entity/120406",
+          "label": "Orthodox"
+        },
+        {
+          "hierarchy": "Place > Ritual Place > Church",
+          "identifier": "https://tibopenatlas.oeaw.ac.at/api/0.1/entity/286",
+          "label": "Existing Church"
+        }
+      ],
+      "when": {
+        "timespans": [
+          {
+            "start": {
+              "earliest": "1100-01-01",
+              "latest": "1299-12-31"
+            }
+          }
+        ]
+      }
+    }
+  ],
+  "type": "FeatureCollection"
+}

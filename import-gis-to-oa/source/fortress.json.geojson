@@ -1,0 +1,10 @@
+{
+"type": "FeatureCollection",
+"name": "fortress",
+"crs": { "type": "name", "properties": { "name": "urn:ogc:def:crs:OGC:1.3:CRS84" } },
+"features": [
+{ "type": "Feature", "properties": { "title": "test 1" }, "geometry": { "type": "Point", "coordinates": [ 21.122906507984435, 43.408749068420541 ] } },
+{ "type": "Feature", "properties": { "title": "test 2" }, "geometry": { "type": "Point", "coordinates": [ 22.071300075901945, 43.123431647594451 ] } },
+{ "type": "Feature", "properties": { "title": "ÄÖĆŠČ" }, "geometry": { "type": "Point", "coordinates": [ 21.065023332477733, 42.653665324168081 ] } }
+]
+}

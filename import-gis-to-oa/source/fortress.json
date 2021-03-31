@@ -1,0 +1,23 @@
+[
+  {
+    "name": "Alexander Watzinger",
+    "class_code": "E21",
+    "description": "The lead developer of OA and saviour of the bars.",
+    "begin_from": "2000",
+    "type_links": [
+      33276,
+      6747
+    ]
+  },
+  {
+    "name": "ACDH",
+    "class_code": "E40",
+    "description": "The host institution",
+    "begin_from": "2015",
+    "end_from": "2021-03-01",
+    "type_links": [
+      33276,
+      6747
+    ]
+  }
+]
