@@ -12,7 +12,7 @@ cursor = conn.cursor()
 
 
 def gis_import():
-    collection = get_data('source/lcp_mac/all.geojson')
+    collection = get_data('source/montenegro_routes.geojson')
     data = []
 
     for entity in collection:
@@ -33,10 +33,10 @@ def gis_import():
         #                          date=entity['date'])
         # place_id = insert_entity(title='Old Road ' + entity['title'], code='E18', system_type='place',
         #                          date=None)
-        place_id = insert_entity(title=entity['title'], code='E18', system_type='place',
+        place_id = insert_entity(title=entity['title'], code='E18', system_class='place',
                                  date=None)
         location_id = insert_entity(title='Location of ' + entity['title'], code='E53',
-                                    system_type='place location', date=None)
+                                    system_class='object_location', date=None)
         insert_link(domain_id=place_id, range_id=location_id, property_code='P53')
         # insert_link(domain_id=place_id, range_id=123338, property_code='P2')  # Link to Place Type
         # insert_link(domain_id=place_id, range_id=116482, property_code='P2')  # Link to Case Study "Macedonian Road System" (TIB)
@@ -59,19 +59,19 @@ def get_data(source):
             #      'book': feature['properties']['book'],
             #      'geom': feature['geometry']})
             data.append(
-                {'title': feature['properties']['title'],
-                 'name': feature['properties']['title'],
+                {'title': feature['geometry']['title'],
+                 'name': feature['geometry']['title'],
                  'geom': feature['geometry']})
         return data
 
 
-def insert_entity(title, code, system_type, date):
+def insert_entity(title, code, system_class, date):
     sql = """
-        INSERT INTO model.entity (name, system_type, description, begin_from, end_from, class_code)
-        VALUES (%(name)s, %(system_type)s, %(description)s, %(begin_from)s, %(end_from)s, %(code)s)
+        INSERT INTO model.entity (name, system_class, description, begin_from, end_from, class_code)
+        VALUES (%(name)s, %(system_class)s, %(description)s, %(begin_from)s, %(end_from)s, %(code)s)
         RETURNING id;"""
     params = {'name': str(title).strip(),
-              'system_type': system_type,
+              'system_class': system_class,
               'description': '',
               'begin_from': datetime64_to_timestamp(date),
               'end_from': datetime64_to_timestamp(date),
