@@ -11,10 +11,10 @@ exclude = ("BOOR", "Innoc.", "SVORONOS","TAFEL-THOMAS","BEES","DELATTE","NESBITT
 filenames = []
 all = []
 
-for i in range(1, 13):
+for i in [11]:
     c = str(i)
-    input = "register/tib"+c+"_input.txt"
-    output = "register/tib"+c+"_output.json"
+    input = "C:/Users/bkoschicek/Desktop/DigTIB-Tools/digtib-register/tib"+c+"_input.txt"
+    output = "tib"+c+"_output.json"
     filenames.append(output)
     reg = re.compile('.[>].*')
     results = []
@@ -32,13 +32,13 @@ for i in range(1, 13):
                 line = line.replace("]", "</i>")
                 line = line.replace("{", "<b>")
                 line = line.replace("}", "</b>")"""
-                out = {"text": "", "pages": "", "pointer": "", "tib": "TIB "+c}
+                out = {"Name": "", "Pages": "", "Notes": "", "Volume": "TIB "+c}
                 #
                 if re.search(".[\>].*", line):
                     reg = re.search(".[\>].*", line)
                     find = re.findall(".[\>].*", line)
                     str1 = ''.join(find)
-                    out["pointer"] += str1
+                    out["Notes"] += str1
                     m = reg.span()
                     line = line[0:m[0]]
 
@@ -49,54 +49,57 @@ for i in range(1, 13):
                     line = line.split()
                     for i in line:
                         if i.strip():
-                            if i[0].isdigit():
+                            if i.startswith("{"):
+                                out["Pages"] += i.replace('}', '</b>')\
+                                                    .replace('{', '<b>') + " "
+                            elif i[0].isdigit():
                                 i = i.replace("A.", " A. ")
-                                out["pages"] += i + " "
+                                out["Pages"] += i + " "
                             elif i.startswith("A."):
-                                out["pages"] += i + " "
+                                out["Pages"] += i + " "
                             elif i.startswith("TIB12"):
-                                out["pointer"] += "-> TIB 12"
+                                out["Notes"] += "-> TIB 12"
                             elif i.startswith("TIB11"):
-                                out["pointer"] += "-> TIB 11"
+                                out["Notes"] += "-> TIB 11"
                             elif i.startswith("TIB10"):
-                                out["pointer"] += "-> TIB 10"
+                                out["Notes"] += "-> TIB 10"
                             elif i.startswith("TIB9"):
-                                out["pointer"] += "-> TIB 9"
+                                out["Notes"] += "-> TIB 9"
                             elif i.startswith("TIB8"):
-                                out["pointer"] += "-> TIB 8"
+                                out["Notes"] += "-> TIB 8"
                             elif i.startswith("TIB7"):
-                                out["pointer"] += "-> TIB 7"
+                                out["Notes"] += "-> TIB 7"
                             elif i.startswith("TIB6"):
-                                out["pointer"] += "-> TIB 6"
+                                out["Notes"] += "-> TIB 6"
                             elif i.startswith("TIB5"):
-                                out["pointer"] += "-> TIB 5"
+                                out["Notes"] += "-> TIB 5"
                             elif i.startswith("TIB4"):
-                                out["pointer"] += "-> TIB 4"
+                                out["Notes"] += "-> TIB 4"
                             elif i.startswith("TIB3"):
-                                out["pointer"] += "-> TIB 3"
+                                out["Notes"] += "-> TIB 3"
                             elif i.startswith("TIB2"):
-                                out["pointer"] += "-> TIB 2"
+                                out["Notes"] += "-> TIB 2"
                             elif i.startswith("TIB1"):
-                                out["pointer"] += "-> TIB 1"
+                                out["Notes"] += "-> TIB 1"
                             else:
-                                out["text"] += i + " "
+                                out["Name"] += i + " "
                     #out["text"] += "</td>"
             # Nicht elegant, aber es löscht die letzten zwei Chars von den Pages, ein Char ist ein Whitespace
             # und dann kommt das Komma. Muss kontrolliert werden ob das so wirklich überall passt. aber sollte schon sein
-                    p = out["pages"]
-                    out["pages"] = p
+                    p = out["Pages"]
+                    out["Pages"] = p
                     #out["pages"] += "</td>"
                     #out["pointer"] += "</td>"
                     results.append(out)
 
                     #print(out)
 
-    print(results)
+    #print(results)
     results.append(all)
 
 
     with open(output, mode="w", encoding="utf-8") as file:
-        json.dump(results, file)
+        json.dump(results, file, ensure_ascii=False)
         # for d in results:
         #     file.write("<tr>")
         #     file.write(d["text"])
@@ -113,10 +116,10 @@ for i in range(1, 13):
     # Abstände sollten weggelöscht werden beim file in
     # if > Abstand und Zahl bzw buchstabe von A-Z, a-z, Sonderzeichen wie . :  und dann Abstand und und Zahl steht
 
-with open('register/tib_all.json', mode="w", encoding="utf8") as outfile:
-    json.dump(all, outfile)
-    # for fname in filenames:
-    #     with open(fname, encoding="utf8") as infile:
-    # #         for line in infile:
-    #             #print(line)
-    #             outfile.write(line)
+# with open('register/tib_all.json', mode="w", encoding="utf8") as outfile:
+#     json.dump(all, outfile)
+#     # for fname in filenames:
+#     #     with open(fname, encoding="utf8") as infile:
+#     # #         for line in infile:
+#     #             #print(line)
+#     #             outfile.write(line)
