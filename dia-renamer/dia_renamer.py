@@ -2,19 +2,21 @@
 import os
 import re
 from builtins import open, print
+from pathlib import Path
 
-dir = "C:/Users/bkoschicek/Desktop/Python/renamer/rename/TIB05"
+dir_ = Path('D:/TIB05')
 
-name_list = "tib5.txt"
+name_list = Path(__file__).parent / 'lists' / 'tib5.txt'
 
 
 def main():
-    for root, dirs, files in os.walk(dir, topdown=False):
+    for root, dirs, files in os.walk(dir_, topdown=False):
+
         for name in files:
-             with open(name_list, mode="r", encoding="utf8") as file:
+            with open(name_list, mode="r", encoding="utf-8") as file:
                 for line in file:
-                    src_name = re.findall("^(.*)[:]", line)
-                    dst_name = re.findall(":\s(.*)", line)
+                    src_name = re.findall("^(.*)[;]", line)
+                    dst_name = re.findall(";(.*)", line)
 
                     dst = dst_name[0] + ".jpg"
                     dst_path = os.path.join(root, dst)
